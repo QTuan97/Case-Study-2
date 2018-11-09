@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    textarea, label{
+        display: block;
+    }
+</style>
+<body>
+<h1>Create Note</h1>
+<p>
+    <a href="/notes">Notes list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-note}" th:object="${notes}" method="post">
+    <tr>
+        <td>Title</td>
+        <td><input type="text" th:field="*{title}"></td>
+    </tr>
+    <tr>
+        <td>Type:</td>
+        <td>
+            <select th:field="*{type}">
+                <option th:each="c : ${types}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td><label>Content</label></td>
+        <td><label><textarea th:field="*{content}"></textarea></label></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" value="Create note"></td>
+    </tr>
+</form>
+</body>
+</html>

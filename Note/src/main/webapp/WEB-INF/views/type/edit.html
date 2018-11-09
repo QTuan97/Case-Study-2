@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<h1>Edit type</h1>
+<body>
+<a href="/types">Type list</a>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-type}" th:object="${type}" method="post">
+    <input type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input th:field="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><input th:field="*{description}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value= "Edit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
